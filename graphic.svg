@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+width="600px" height="600px">
+<title>graphic.svg</title>
+
+<path d="
+M 0.00 0.00
+L 0.00 600.00
+L 600.00 600.00
+L 600.00 0.00
+z"
+fill="#FFFFFF" stroke="#FFFFFF"/>
+<polygon points="
+1.00 599.00
+599.00 599.00
+599.00 1.00
+1.00 1.00
+" fill="none" stroke="#0000FF" stroke-width="2"/>
+<text transform="translate(315.00,20.00)"
+font-family="Verdana" font-size="16" fill="#000000"
+text-anchor="start" dominant-baseline="text-after-edge">
+Sierpinski Triangle
+</text>
+<line x1="300.00" y1="599.00" x2="300.00" y2="480.00"
+stroke="#000000"/>
+<line x1="300.00" y1="480.00" x2="189.67" y2="435.42"
+stroke="#000000"/>
+<line x1="189.67" y1="435.42" x2="79.33" y2="390.84"
+stroke="#000000"/>
+<line x1="79.33" y1="390.84" x2="-31.00" y2="346.27"
+stroke="#000000"/>
+<line x1="79.33" y1="390.84" x2="189.67" y2="346.27"
+stroke="#000000"/>
+<line x1="189.67" y1="435.42" x2="300.00" y2="390.84"
+stroke="#000000"/>
+<line x1="300.00" y1="480.00" x2="410.33" y2="435.42"
+stroke="#000000"/>
+
+</svg>

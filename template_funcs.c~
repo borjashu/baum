@@ -1,0 +1,153 @@
+/***********************************************************************
+ * functions to
+ * Template for using graphics-ADT CPlotter
+ *
+ ***********************************************************************/
+
+#include "template_funcs.h"
+
+/* TODO */
+void ploterplotfirst  ( int wied, const unsigned int PSZ,CPLT_point_t *points, CPLT_gc_t gc){
+	CPLT_point_t temp[3],temp1[3];
+	int j;
+
+	j=2;
+	if(wied>=1){
+		//triangle middle
+
+		temp[0].x = (points[1].x+points[2].x)/2;    		temp[0].y = (points[1].y+points[2].y)/2;
+		temp[1].x = (points[0].x+points[2].x)/2;	  	temp[1].y = (points[0].y+points[2].y)/2;
+		temp[2].x = (points[0].x+points[1].x)/2;   		temp[2].y = (points[0].y+points[1].y)/2;
+
+		CPLT_draw_polygon( gc,  3, temp);
+
+	}
+	if(wied>=2){
+
+		plottop  (  wied,PSZ,&temp,j, gc);
+		plotleft (  wied,PSZ,&temp,j, gc);
+		plotright ( wied,PSZ,&temp,j, gc);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+//triangle top
+
+
+void plottop ( int wied, const unsigned int PSZ,CPLT_point_t *temp, int j,CPLT_gc_t gc){
+
+
+	CPLT_point_t temp1[3];
+
+
+	temp1[0].x = ((temp[0].x+temp[1].x)/2)+((temp[1].x-temp[2].x)/2);    			temp1[0].y = ((temp[0].y+temp[1].y)/2)+((temp[1].y-temp[2].y)/2);
+	temp1[1].x = ((temp[0].x+temp[1].x)/2)+((temp[0].x-temp[2].x)/2);   			temp1[1].y = ((temp[0].y+temp[1].y)/2)+((temp[0].y-temp[2].y)/2);
+	temp1[2].x = ((temp[0].x+temp[1].x)/2);							temp1[2].y = (temp[0].y+temp[1].y)/2;
+
+
+	CPLT_draw_polygon( gc,  3, temp1);
+
+	if (j<wied){
+
+		plottop  ( wied,PSZ,&temp1,j+1, gc);
+		plotleft (wied, PSZ,&temp1,j+1, gc);
+		plotright ( wied,PSZ,&temp1,j+1, gc);
+
+	}
+
+}
+
+
+
+
+
+
+//triangle left
+
+
+void plotleft(int wied,  const unsigned int PSZ,CPLT_point_t *temp, int j,CPLT_gc_t gc){
+
+
+
+	CPLT_point_t temp1[3];
+
+
+	temp1[0].x = ((temp[2].x+temp[1].x)/2)+((temp[1].x-temp[0].x)/2);    			temp1[0].y = ((temp[2].y+temp[1].y)/2)+((temp[1].y-temp[0].y)/2);
+	temp1[1].x = ((temp[2].x+temp[1].x)/2)+((temp[2].x-temp[0].x)/2);   			temp1[1].y = ((temp[2].y+temp[1].y)/2)+((temp[2].y-temp[0].y)/2);
+	temp1[2].x = ((temp[2].x+temp[1].x)/2);							temp1[2].y = (temp[2].y+temp[1].y)/2;
+
+
+	CPLT_draw_polygon( gc,  3, temp1);
+
+	if (j<wied){
+
+		plottop   (wied,PSZ,&temp1,j+1, gc);
+		plotleft  (wied,PSZ,&temp1,j+1, gc);
+		plotright (wied,PSZ,&temp1,j+1, gc);
+
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+//triangle right
+void plotright(int wied,  const unsigned int PSZ,CPLT_point_t *temp, int j,CPLT_gc_t gc){
+
+	CPLT_point_t temp1[3];
+
+
+
+	temp1[0].x = ((temp[0].x+temp[2].x)/2)+((temp[2].x-temp[1].x)/2);    			temp1[0].y = ((temp[0].y+temp[2].y)/2)+((temp[2].y-temp[1].y)/2);
+	temp1[1].x = ((temp[0].x+temp[2].x)/2)+((temp[0].x-temp[1].x)/2);   			temp1[1].y = ((temp[0].y+temp[2].y)/2)+((temp[0].y-temp[1].y)/2);
+	temp1[2].x = ((temp[0].x+temp[2].x)/2);							temp1[2].y = (temp[0].y+temp[2].y)/2;
+
+
+	CPLT_draw_polygon( gc,  3, temp1);
+
+
+	if (j<wied){
+
+		plottop  (  wied,PSZ,&temp1,j+1, gc);
+		plotleft (  wied,PSZ,&temp1,j+1, gc);
+		plotright ( wied,PSZ,&temp1,j+1, gc);
+
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
