@@ -30,13 +30,14 @@ void ploterplotfirst  (int wied, const unsigned int PSZ, CPLT_gc_t gc){
 	int k=20;
 	double l=119;
 	double windif=1.53938;
+	float R=0.25, G=0.1, B=0.1;
 	const float fac_l = 0.75;
 	/* Konstante Pi definieren */
 
 
 
 	CPLT_set_linewidth(gc, k);
-
+ CPLT_set_color(gc, R, G, B);
 
 	points[0].x = PSZ/2.;        	 points[0].y = 1.;
 	points[1].x = PSZ/2.;   	points[1].y =l ;
