@@ -57,7 +57,7 @@ int main() {
         			
 	
 	
-   			 ploterplotfirst  (wied,PSZ,gc,&a);
+   			 ploterplotfirst  (wied,PSZ,gc);
    					
    			
    				

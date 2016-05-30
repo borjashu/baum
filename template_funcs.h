@@ -10,7 +10,7 @@
 #include <math.h>
 
 /* prototypes of own functions */
-void ploterplotfirst  (int wied,const unsigned int PSZ, CPLT_gc_t gc,int *a);
+void ploterplotfirst  (int wied,const unsigned int PSZ, CPLT_gc_t gc);
 //void dicke  (int wied,int *a);
 /* TODO */
 
