@@ -18,8 +18,7 @@ int main() {
    char *plotfilename = "graphic.svg";
    int numpts=2;
    
-const double l=119;
-const double da =(22* 3.141592653);
+
 
 
   int wied=2;
@@ -58,7 +57,7 @@ const double da =(22* 3.141592653);
         			
 	
 	
-   			 ploterplotfirst  (da,l, wied,PSZ,gc);
+   			 ploterplotfirst  (wied,PSZ,gc);
    					
  
    				

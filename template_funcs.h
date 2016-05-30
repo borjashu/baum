@@ -7,10 +7,10 @@
  ***********************************************************************/
 
 #include "CPlotter.h"
-
+#include <math.h>
 
 /* prototypes of own functions */
-void ploterplotfirst  ( double da, double l, int wied,const unsigned int PSZ, CPLT_gc_t gc);
+void ploterplotfirst  (int wied,const unsigned int PSZ, CPLT_gc_t gc);
 /* TODO */
 
 #endif

@@ -73,7 +73,7 @@ void plotleft(  const float da,  double l,int wied,  const unsigned int PSZ,CPLT
 
 
 		plotleft  (da,l,wied,PSZ,&temp1,j+1, gc);
-		plotright (da,l,wied,PSZ,&temp1,j, gc);
+		plotright (da,l,wied,PSZ,&temp1,j+1, gc);
 
 	}
 
@@ -101,7 +101,7 @@ void plotright(  const float da, double l,int wied,  const unsigned int PSZ,CPLT
 	if (j<wied){
 
 
-		plotleft  (da,l,wied,PSZ,&temp1,j, gc);
+		plotleft  (da,l,wied,PSZ,&temp1,j+1, gc);
 		plotright (da,l,wied,PSZ,&temp1,j+1, gc);
 
 	}
