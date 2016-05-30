@@ -4,34 +4,32 @@
  *
  ***********************************************************************/
 
-//ТЫ ДИБИЛ j равен нулю!!!!!!!
+
 
 #include "template_funcs.h"
 #include <math.h>
 
-float   winkell  (const float da, int j){
-	double windif,windif1;
-	//const float a=90;
-	windif1	=  (90-(22*j));
-	windif=(windif1*3.14)/180;
-	return windif;
+void   winkell  (double *windif){
+
+
+	*windif	=  (*windif-0.345575);
+
+	
 }
-float   winkelr  (const float da, int j){
-	double windif,windif1;
-	//const float a=90;
-	windif1	=  (90+(22*j));
-	windif=(windif1*3.14)/180;
-	return windif;
+void   winkelr  (double *windif){
+
+	
+	*windif	=  (*windif+0.345575);
 }
 
 /* TODO */
-void ploterplotfirst  (int wied, const unsigned int PSZ, CPLT_gc_t gc){
+void ploterplotfirst  (int wied, const unsigned int PSZ, CPLT_gc_t gc,int *a){
 	CPLT_point_t points[2];
 	int j=0;
 	const float da=22;
 	double l=119;
-
-
+double windif=1.53938;
+const float fac_l = 0.75;
 	/* Konstante Pi definieren */
 
 
@@ -39,30 +37,34 @@ void ploterplotfirst  (int wied, const unsigned int PSZ, CPLT_gc_t gc){
 
 
 	points[0].x = PSZ/2.;        	 points[0].y = 1.;
-	points[1].x = PSZ/2.;   	points[1].y =points[0].y+l ;
+	points[1].x = PSZ/2.;   	points[1].y =l ;
 
 
 	CPLT_draw_polyline( gc,  2,points );
 
-	plotleft (da,l, wied,PSZ,&points,j, gc);
-	plotright (da,l, wied,PSZ,&points,j, gc);
+	plotleft (da,l*fac_l, wied,PSZ,&points,j, gc,windif,fac_l,&a);
+	plotright(da,l*fac_l, wied,PSZ,&points,j, gc,windif,fac_l,&a);
 }
 
 
 
 
-void plotleft(  const float da,  double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, int j,CPLT_gc_t gc){
 
-	float xy;
-	xy=winkell(da,j);
-
-
+void plotleft(  const float da,  double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, int j,CPLT_gc_t gc,double windif,const float fac_l,int *a){
+	
+	//double windif,rad;
+	
+	/*rad=points[1].y/l;
+	windif=asin(rad);
+	*/
+    winkell(&windif);
 	CPLT_point_t temp1[2];
 
 
 	temp1[0].x = points[1].x;   						temp1[0].y = points[1].y;
-	temp1[1].x = points[1].x-(cos(xy)*l);   				temp1[1].y = points[1].y+(sin(xy)*l);
+	temp1[1].x = points[1].x-(cos(windif)*l);   				temp1[1].y = points[1].y+(sin(windif)*l);
 
+	
 
 	CPLT_draw_polyline( gc,  2,temp1);
 
@@ -70,28 +72,27 @@ void plotleft(  const float da,  double l,int wied,  const unsigned int PSZ,CPLT
 
 
 	if (j<wied){
+*a=a-2;
 
-
-		plotleft  (da,l,wied,PSZ,&temp1,j+1, gc);
-		plotright (da,l,wied,PSZ,&temp1,j, gc);
+		plotleft  (da,l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a);
+		plotright (da,l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a);
 
 	}
 
 }
 
 
-void plotright(  const float da, double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, int j,CPLT_gc_t gc){
-
-	float xy;
-	xy=winkelr(da,j+1);
-
-
+void plotright(  const float da,  double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, int j,CPLT_gc_t gc,double windif,const float fac_l,int *a){
+	 
+		
+		winkelr(&windif);
 	CPLT_point_t temp1[2];
 
 
 	temp1[0].x = points[1].x;   						temp1[0].y = points[1].y;
-	temp1[1].x = points[1].x-(cos(xy)*l);   				temp1[1].y = points[1].y+(sin(xy)*l);
+	temp1[1].x = points[1].x-(cos(windif)*l);   				temp1[1].y = points[1].y+(sin(windif)*l);
 
+	
 
 	CPLT_draw_polyline( gc,  2,temp1);
 
@@ -99,18 +100,20 @@ void plotright(  const float da, double l,int wied,  const unsigned int PSZ,CPLT
 
 
 	if (j<wied){
+a=*a-2;
 
+		plotleft  (da,l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a);
+		plotright (da,l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a);
 
-		plotleft  (da,l,wied,PSZ,&temp1,j, gc);
-		plotright (da,l,wied,PSZ,&temp1,j+1, gc);
 
 	}
 
 }
 
-
-
-
+/*void dicke  (int wied,int *a){
+for
+}
+*/
 
 
 
