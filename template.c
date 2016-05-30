@@ -16,8 +16,8 @@ int main() {
    CPLT_gc_t gc;                    /* graphics context */
    CPLT_point_t pts[4];             /* coord. points */
    char *plotfilename = "graphic.svg";
-   int a=20;
    
+   int a=20;
 
 
 
@@ -43,7 +43,7 @@ int main() {
 
    
    CPLT_draw_polygon(gc, 4, pts);
-   CPLT_set_linewidth(gc, a);
+ 
    CPLT_set_color(gc, 0., 0., 0.);
    CPLT_set_fontsize(gc, 16);
    CPLT_draw_text(gc, 0.5 * PSZ+15, PSZ - 20., "sw", 0., "Baum");
@@ -59,7 +59,7 @@ int main() {
 	
    			 ploterplotfirst  (wied,PSZ,gc,&a);
    					
-   			// dicke(wied,&a);
+   			
    				
   	
   		 /* finish graphics */
