@@ -37,7 +37,7 @@ void ploterplotfirst  (int wied, const unsigned int PSZ, CPLT_gc_t gc){
 
 
 	CPLT_set_linewidth(gc, k);
- CPLT_set_color(gc, R, G, B);
+	CPLT_set_color(gc, R, G, B);
 
 	points[0].x = PSZ/2.;        	 points[0].y = 1.;
 	points[1].x = PSZ/2.;   	points[1].y =l ;
@@ -45,15 +45,16 @@ void ploterplotfirst  (int wied, const unsigned int PSZ, CPLT_gc_t gc){
 
 	CPLT_draw_polyline( gc,  2,points );
 
-	plotleft (l*fac_l, wied,PSZ,&points,j, gc,windif,fac_l,&a,k);
-	plotright(l*fac_l, wied,PSZ,&points,j, gc,windif,fac_l,&a,k);
+	plotleft (l*fac_l, wied,PSZ,&points,j, gc,windif,fac_l,&a,k,R,G,B);
+	plotright(l*fac_l, wied,PSZ,&points,j, gc,windif,fac_l,&a,k,R,G,B);
 }
 
 
 
 
 
-void plotleft( double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, int j,CPLT_gc_t gc,double windif,const float fac_l,int *a,int k){
+void plotleft( double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, int j,CPLT_gc_t gc,double windif,const float fac_l,int *a,int k,
+               float R,float G,float B){
 
 
 	winkell(&windif);
@@ -66,6 +67,7 @@ void plotleft( double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, 
 
 
 	CPLT_set_linewidth(gc, k);
+	CPLT_set_color(gc, R, G, B);
 	CPLT_draw_polyline( gc,  2,temp1);
 
 
@@ -73,15 +75,16 @@ void plotleft( double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, 
 	if (j<wied){
 
 
-		plotleft  (l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a,k*0.75);
-		plotright (l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a,k*0.75);
+		plotleft  (l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a,k*0.75,R-0.025,G+0.07,B);
+		plotright (l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a,k*0.75,R-0.025,G+0.07,B);
 
 	}
 
 }
 
 
-void plotright(double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, int j,CPLT_gc_t gc,double windif,const float fac_l,int *a,int k){
+void plotright(double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, int j,CPLT_gc_t gc,double windif,const float fac_l,int *a,int k
+               ,float R,float G,float B){
 
 
 	winkelr(&windif);
@@ -93,6 +96,7 @@ void plotright(double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, 
 
 
 	CPLT_set_linewidth(gc, k);
+	CPLT_set_color(gc, R, G, B);
 	CPLT_draw_polyline( gc,  2,temp1);
 
 
@@ -101,8 +105,8 @@ void plotright(double l,int wied,  const unsigned int PSZ,CPLT_point_t *points, 
 	if (j<wied){
 
 
-		plotleft  (l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a,k*0.75);
-		plotright (l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a,k*0.75);
+		plotleft  (l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a,k*0.75,R-0.025,G+0.07,B);
+		plotright (l*0.75,wied,PSZ,&temp1,j+1, gc,windif,fac_l,&a,k*0.75,R-0.025,G+0.07,B);
 
 
 	}
